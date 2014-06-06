@@ -7,9 +7,9 @@ request = request(mokapot);
 describe('Moka Pot', function () {
 
   describe('GET /', function () {
-
     it('returns 200', function (done) {
       request.get('/').expect(200, done);
+      request.get('/')
     });
 
     it('responds with json', function (done) {
@@ -21,4 +21,22 @@ describe('Moka Pot', function () {
     });
   });
 
+  describe('GET /:id', function () {
+
+    it('returns data about an especific device', function (done) {
+     request.get('/IOT01').expect("IOT01", done);
+    }); 
+  });
+
+describe('POST /', function () {
+    it('Create a coffee machine', function (done) {
+      request.post('/').expect(200,done);
+    });
+  });
+
+describe('PUT /:id', function () {
+    it('Send information for a especific machine', function (done) {
+         request.put('/IOT01').expect(200,done);
+    });
+  });
 });
