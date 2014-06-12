@@ -9,7 +9,6 @@ describe('Moka Pot', function () {
   describe('GET /', function () {
     it('returns 200', function (done) {
       request.get('/').expect(200, done);
-      request.get('/')
     });
 
     it('responds with json', function (done) {
@@ -17,14 +16,14 @@ describe('Moka Pot', function () {
     });
 
     it('returns the registered coffee-makers', function (done) {
-      request.get('/').expect([], done);
+      request.get('/').expect([{"name": "IOT01","status": "10"}],done);
     });
   });
 
   describe('GET /:id', function () {
 
     it('returns data about an especific device', function (done) {
-     request.get('/IOT01').expect("IOT01", done);
+     request.get('/IOT01').expect({"name": "IOT01","status": "10"}, done);
     }); 
   });
 

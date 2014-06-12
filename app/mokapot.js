@@ -3,14 +3,15 @@ var app = module.exports = express();
 var MachineControl = require('./controller/machineController');
 
 app.get('/', function (req, res) {
-  res.send({new MachineControl.findAll()});
+  res.send(new MachineControl.findAll());
 });
 
 app.get('/:id', function (req, res) {
-  res.send(req.params.id); 
+  res.send(new MachineControl.findById(req.params.id)); 
 });
 
 app.post('/',function (req, res) {
+  
   res.send(res.statusCode = 200);
 });
 
