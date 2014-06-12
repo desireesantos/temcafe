@@ -1,13 +1,14 @@
 var Machine = require('../models/machine');
+var machineIoT1 = new Machine('IOT01','10');
 
 exports.findAll = function () {
-  return [new Machine('IOT01','10')];
+  return [machineIoT1];
 }
 
 exports.findById = function (id) {
-  return new Machine(id,'10');
+  return machineIoT1;
 }
 
-exports.udpated = function (machine) {
-  return new Machine();
+exports.new = function (machine) {
+  return new Machine(machine.name, machine.status);
 }

@@ -12,6 +12,6 @@ test.unit:; @mocha
 
 .PHONY: lint
 source_files := $(wildcard config/*.js app/*.js)
+
 lint: $(source_files)
 	@jshint --reporter node_modules/jshint-stylish/stylish.js $(source_files)
-
