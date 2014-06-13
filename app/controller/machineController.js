@@ -1,12 +1,13 @@
 var Machine = require('../models/machine');
-var machineIoT1 = new Machine('IOT01','10');
+var service = require('../service/machineService');
+
 
 exports.findAll = function () {
-  return [machineIoT1];
+  return service.findAll();
 }
 
 exports.findById = function (id) {
-  return machineIoT1;
+  return new Machine('IOT01','0');
 }
 
 exports.new = function (machine) {

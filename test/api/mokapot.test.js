@@ -16,14 +16,13 @@ describe('Moka Pot', function () {
     });
 
     it('returns the registered coffee-makers', function (done) {
-      request.get('/').expect([{"name": "IOT01","status": "10"}],done);
+      request.get('/').expect([{"name": "IOT01","status": "0"}],done);
     });
   });
 
   describe('GET /:id', function () {
-
     it('returns data about an especific device', function (done) {
-     request.get('/IOT01').expect({"name": "IOT01","status": "10"}, done);
+     request.get('/IOT01').expect({"name": "IOT01","status": "0"}, done);
     }); 
   });
 
