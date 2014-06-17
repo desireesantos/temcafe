@@ -18,13 +18,3 @@ app.put('/:id', function (req, res) {
   res.send(res.statusCode = 200); 
 });
 
-var fortune = require('fortune')
-  , app = fortune({
-    db: 'mockapot'
-  })
-  .resource('/', {
-    name: String,
-    age: Number,
-    pets: ['pet'] // "has many" relationship to pets
-  })
-  .listen(1337);

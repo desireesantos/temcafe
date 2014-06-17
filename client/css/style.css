@@ -1,0 +1,13 @@
+h1 {
+  font-weight: bold;
+  color: orange;
+  font-size: 80pt;
+  text-align: center
+}
+
+span {
+  font-weight: bold;
+  color: black;
+  font-size: 70pt;
+  padding-left: 50% 
+}
