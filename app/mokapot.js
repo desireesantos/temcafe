@@ -3,6 +3,8 @@ var app = module.exports = express();
 var machineControl = require('./controller/machineController');
 
 app.get('/', function (req, res) {
+  
+  res.render('index', { title: 'ejs' });
   res.json(machineControl.findAll());
 });
 
