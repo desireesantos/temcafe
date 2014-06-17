@@ -3,8 +3,7 @@ var app = module.exports = express();
 var machineControl = require('./controller/machineController');
 
 app.get('/', function (req, res) {
-  
-  res.render('index', { title: 'ejs' });
+    // res.render('index', { title: 'ejs' }); Adicionando template os testes nao passam, verificar isso 
   res.json(machineControl.findAll());
 });
 
