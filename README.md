@@ -1,5 +1,4 @@
 # Tem Café?
 
 ## License 
-This is free and unencumbered software released into the public domain.
- <MIT: http://rem.mit-license.org>
+MIT: [http://rem.mit-license.org](http://rem.mit-license.org)
