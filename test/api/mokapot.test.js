@@ -1,7 +1,8 @@
 var expect = require('chai').expect;
+var should = require('chai').should()
 var request = require('supertest');
+var mokapot = require('../../server/api/mokapot');
 
-var mokapot = require('../../app/mokapot');
 request = request(mokapot);
 
 describe('Moka Pot', function () {
@@ -27,14 +28,16 @@ describe('Moka Pot', function () {
   });
 
 describe('POST /', function () {
+  machine = { name: 'IOT01', status: '100'}
     it('Create a coffee machine', function (done) {
-      request.post('/').expect(200,done);
-    });
+      request.post('/').set('Content-Type', 'application/json').send(machine).expect(200, done);     
+});
   });
 
 describe('PUT /:id', function () {
+  machine = { name: 'IOT01', status: '100'}
     it('Send information for a especific machine', function (done) {
-         request.put('/IOT01').expect(200,done);
+         request.put('/IOT01').set('Content-Type', 'application/json').send(machine).expect(200, done);
     });
   });
 });

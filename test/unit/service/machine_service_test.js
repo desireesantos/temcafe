@@ -1,6 +1,6 @@
 var assert = require("assert")
 var expect = require('chai').expect;
-var machineService = require('../../../app/service/machineService');
+var machineService = require('../../../server/api/service/machine');
 
 describe('Machine service', function(){
 
@@ -9,8 +9,8 @@ describe('Machine service', function(){
       })
 
     it('#create', function(){
-        var Machine = require('../../../app/models/machine');
-        new_machine = machineService.create(new Machine("01",100));
+        var Machine = require('../../../server/api/service/machine');
+        new_machine = machineService.create("01",100);
 
         assert.equal(new_machine.name, "01");
         assert.equal(new_machine.status, 100);
