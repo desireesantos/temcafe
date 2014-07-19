@@ -16,6 +16,10 @@ $bin/mockapot
 
 ```
 
+Rodar os testes:
+```
+make tests
+``
 
 Escopo: `Internet das coisas`, `m2m`, `Open hardware`
 
