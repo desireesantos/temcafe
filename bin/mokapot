@@ -7,11 +7,11 @@ app.use('/api', require('../server/api'));
 app.use('/', require('serve-static')(require('path').resolve(__dirname, '../client')));
 
 var http = require('http').Server(app);
+require('../server/ws')(http);
+
 http.listen(config.port, function () {
   console.log('Server listening at port %d', config.port);
   console.log('» Tem Café? ☕');
 });
-
-require('../server/ws')(http);
 
 

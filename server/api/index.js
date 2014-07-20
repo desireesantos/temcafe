@@ -1,8 +1,7 @@
 var express = require('express');
 var app = module.exports = express();
 
-app.use('/', require('./mokapot'));
-
+app.use('/', require('./mokapot'))
 
 
 
