@@ -2,12 +2,10 @@ var io ;
 module.exports = function (http) {
  io = require('socket.io')(http);
  console.log('Starting ...')
-  getSocket(80);
-
+ getSocket(0);
 }
 
-
-exports.callsocket = function(status){
+module.exports.callsocket = function(status){
   getSocket(status);
 }
 

@@ -1,4 +1,4 @@
-  var ws = require('../../../bin/temcafe');
+  var ws = require('../../ws');
 
   exports.findAll = function () {
     return [new Machine('IOT01','0')];
@@ -9,7 +9,7 @@
   }
 
   exports.create = function (name, status) {
-    ws.getsocket(status);
+    ws.callsocket(status);
     return new Machine(name,status);
   }
 
