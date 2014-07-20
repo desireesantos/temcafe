@@ -5,13 +5,9 @@ module.exports = function (http) {
  getSocket(0);
 }
 
-module.exports.callsocket = function(status){
-  getSocket(status);
-}
-
-function getSocket (level) {
-  io.on('connection', function (client) {
+module.exports.getSocket = function(status) {
+  io.on('connection', function (status) {
     console.log('Sending data ...')
     client.emit('coffee:level', level);
-});
+  });
 }
