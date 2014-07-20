@@ -1,10 +1,17 @@
+var io ;
 module.exports = function (http) {
-var io = require('socket.io')(http);
-
-io.on('connection', function (client) {
-    console.log('Start connnection')
-    client.emit('coffee:level', 60);
-});
-
+ io = require('socket.io')(http);
+   console.log('Starting ...')
+   getSocket(80);
 }
 
+exports.callsocket = function(status){
+  getSocket(status);
+}
+
+function getSocket (level) {
+  io.on('connection', function (client) {
+    console.log('Sending data ...')
+    client.emit('coffee:level', level);
+});
+}
