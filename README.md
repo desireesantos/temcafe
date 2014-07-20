@@ -11,8 +11,8 @@ Projeto que comtempla o conceito de ** Internet das Coisas **, permite visualiza
 Segue o passo a passo:
 
 ```
-cd mockapot
-$bin/mockapot
+cd temcafe
+$bin/temcafe
 
 ```
 
