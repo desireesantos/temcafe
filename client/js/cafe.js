@@ -1,20 +1,20 @@
 angular.module('cafe', [])
 
-.factory('socket', function ($rootScope) {
+.factory('socket', function ($rootScope, $interval) {
+
   var socket = io.connect();
-  function on (event, callback) { socket.on(event, function () {
-    console.log(" ...");
-    var args = arguments;
-    $rootScope.$apply(function () {
-      callback.apply(socket, args);
-    });
-  });} 
-  return { on: on };
+    function on (event) {
+      socket.on(event, function (data) {
+        $rootScope.$apply(function () {
+          $rootScope.coffeeLevel = data;
+        });
+      });
+    };
+  return {on : on}
 })
 
 .run(function ($rootScope, socket) {
-  console.log("running ...");
-  socket.on('coffee:level', function (level) {
+  socket.on('start_msg', function (level) {
     $rootScope.coffeeLevel = level;
   });
 });

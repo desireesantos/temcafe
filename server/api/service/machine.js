@@ -1,24 +1,8 @@
-  var ws = require('../../ws');
 
-  exports.findAll = function () {
-    return [new Machine('IOT01','0')];
-  }
-
-  exports.findById = function (id) {
-    return new Machine('IOT01','0');
-  }
-
-  exports.create = function (name, status) {
-    ws.callsocket(status);
-    return new Machine(name,status);
-  }
-
-exports.update = function (name, status) {
- return new Machine(name, status);
-}
-
-function Machine ( name, status) {
-    this.name = name;
+module.exports = function (status) {
+    this.name = 'iot1';
     this.status = status ==  false ? '0' : status ;
-}
+};
+
+
 
