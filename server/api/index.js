@@ -21,8 +21,3 @@ function getSocket() {
     }); }
 )}
 
-
-// exports.server = function (callback) {
-//  if (socket) callback(socket);
-//  else queue.push(callback);
-// };
