@@ -1,14 +1,22 @@
+var socket;
+var queue = [];
 
-module.exports = function (io) {
-  console.log('Starting ...')
- 
-  no_coffee = 0;  
-  io.sockets.on('connection', function (socket) {
-      socket.emit('coffe:level', no_coffee );
+exports.listen = function (http) {
+ var io = require('socket.io');
+ socket = io.listen(http, require('config').socketio);
+ socket.sockets.on('connection', function (client) {
+      client.emit('coffe:level', 0 );
       console.log('someone connected!');
 
-      socket.on('coffee:level:update', function (level) {
-        socket.emit('coffee:level:update', level);
+      client.on('coffee:level:update', function (level) {
+        client.emit('coffee:level:update', 100);
     });
   }); 
-}
+
+ var cb; while (cb = queue.pop()) cb(socket);
+};
+
+exports.server = function (callback) {
+ if (socket) callback(socket);
+ else queue.push(callback);
+};
