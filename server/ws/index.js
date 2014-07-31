@@ -1,25 +1,14 @@
-var io;
-module.exports = function (http) {
- io = require('socket.io')(http);
- console.log('Starting ...')
- getSocket(0);
-}
 
+module.exports = function (io) {
+  console.log('Starting ...')
+ 
+  no_coffee = 0;  
+  io.sockets.on('connection', function (socket) {
+      socket.emit('coffe:level', no_coffee );
+      console.log('someone connected!');
 
-function getSocket (level) {
-  io.on('connection', function (client) {
-    client.broadcast.emit('coffee:level', level);
-});
-}
-
-function getSocket (level) {
-zero_level = 50;  
-io.sockets.on('connection', function (socket) {
-    socket.emit('start_msg', zero_level );
-
-    socket.on('updated', function (data) {
-        io.sockets.emit('updated', data);
+      socket.on('coffee:level:update', function (level) {
+        socket.emit('coffee:level:update', level);
     });
-}); 
-
+  }); 
 }

@@ -2,16 +2,24 @@
 var express = require('express');
 var config = require('config').server;
 var app = express();
+var router = require('socket.io-events')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 app.use('/api', require('../server/api'));
 app.use('/', require('serve-static')(require('path').resolve(__dirname, '../client')));
 
-var http = require('http').Server(app);
-require('../server/ws')(http);
+
+require('../server/ws')(io);
 
 http.listen(config.port, function () {
   console.log('Server listening at port %d', config.port);
   console.log('» Tem Café? ☕');
 });
 
-
+function handler (req, res) {
+  console.log("emit")
+  if (req.method === 'PUT') {
+    io.emit('coffee:level:update', '100');
+  }
+}

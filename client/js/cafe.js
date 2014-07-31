@@ -14,7 +14,7 @@ angular.module('cafe', [])
 })
 
 .run(function ($rootScope, socket) {
-  socket.on('start_msg', function (level) {
+  socket.on('coffe:level', function (level) {
     $rootScope.coffeeLevel = level;
   });
 });
