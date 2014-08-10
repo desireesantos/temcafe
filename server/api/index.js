@@ -6,18 +6,9 @@ var ws = require('../ws')
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-
 app.put('/:id', function (req, res) {
-  function x (callback){callback(getSocket())};
+  io = ws.testando();
+  io.emit('coffe:level', req.body.status); 
   res.json(new Machine(req.body.status));
 });
-
-
-function getSocket() {
-  ws.server(function (io) {  
-  io.on('coffee:level:update', function () {
-     console.log('Entrou')
-        io.emit('coffee:level:update', 100);
-    }); }
-)}
 

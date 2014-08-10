@@ -4,6 +4,7 @@ angular.module('cafe', [])
 
   var socket = io.connect();
     function on (event) {
+      console.log('event');
       socket.on(event, function (data) {
         $rootScope.$apply(function () {
           $rootScope.coffeeLevel = data;
