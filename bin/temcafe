@@ -4,8 +4,10 @@ var config = require('config').server;
 var app = express();
 var http = require('http').Server(app);
 
+
 app.use('/api', require('../server/api'));
 app.use('/', require('serve-static')(require('path').resolve(__dirname, '../client')));
+
 
 require('../server/ws').listen(http);
 http.listen(config.port, function () {

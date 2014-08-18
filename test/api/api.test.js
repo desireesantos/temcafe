@@ -5,9 +5,7 @@ var temcafe = require('../../server/api/index');
 
 request = request(temcafe);
 
-
 describe('PUT /:id', function () {
-
   machine = { status: '100'}
     it('Update status coffee for a machine', function (done) {
         request.put('/iot1')
