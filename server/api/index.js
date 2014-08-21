@@ -2,7 +2,7 @@ var express = require('express');
 var app = module.exports = express();
 var Machine =  require('./service/machine');
 
-ar redis = require('redis');
+var redis = require('redis');
 var url = require('url');
 var redisURL = url.parse(process.env.REDISCLOUD_URL);
 var client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
