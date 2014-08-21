@@ -4,9 +4,6 @@ var Machine =  require('./service/machine');
 
 var redis = require('redis');
 var url = require('url');
-var redisURL = url.parse(process.env.REDISCLOUD_URL);
-var client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
-client.set('status',30);
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -21,5 +18,5 @@ app.get('/', function (req, res) {
  });
 
 function updatedWebClient(status){
-	ws.callSocket().emit('coffe:level', client.get('status')); 
+	ws.callSocket().emit('coffe:level', status); 
 }
