@@ -2,9 +2,6 @@ var express = require('express');
 var app = module.exports = express();
 var Machine =  require('./service/machine');
 
-var redis = require('redis');
-var url = require('url');
-
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
