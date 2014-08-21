@@ -3,8 +3,6 @@ var express = require('express');
 var config = require('config').server;
 var app = express();
 var http = require('http').Server(app);
-require('./server/db')(config);
-
 
 app.use('/api', require('../server/api'));
 app.use('/', require('serve-static')(require('path').resolve(__dirname, '../client')));
