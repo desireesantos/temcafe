@@ -29,7 +29,8 @@
     "angular": "~1.2.18",
     "body-parser": "~1.4.3",
     "heroku-redis-client": "~0.3.3",
-    "redis": "~0.12.1"
+    "redis": "~0.12.1",
+    "url": "~0.10.1"
   },
   "devDependencies": {
     "chai": "~1.9.1",

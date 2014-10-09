@@ -16,7 +16,8 @@ exports.callSocket = function () {
 
 exports.createClient = function () {
     var client;
-    var redisURL = url.parse(process.env.REDISTOGO_URL);
+    console.log(url);
+    var redisURL = url.parse(process.env.REDISCLOUD_URL);
     if (process.env.REDISTOGO_URL) {       
         client = redis.createClient(redisURL.port, redisURL.hostname, options);
         client.auth(redisURL.auth.split(":")[1]);
@@ -25,16 +26,3 @@ exports.createClient = function () {
     }
     return client;
 };
-
- exports.redis = redis;
-
-
- exports.getRedis = function (){
- 	redis.get("coffee", function (err, reply) {
-       reply.toString();
-    });
- }
-
- exports.setRedis = function (status){
- 	redis.callSocket("coffee", status);
- }

@@ -7,7 +7,6 @@ app.use(bodyParser.json());
 
 app.put('/:id', function (req, res) {
   updatedWebClient(req.body.status);
-  ws.setRedis(req.body.status);
   res.json(new Machine(req.body.status));
 });
 
@@ -16,9 +15,5 @@ app.get('/', function (req, res) {
  });
 
 function updatedWebClient(status){
-	ws.callSocket().emit('coffe:level', status); 
-}
-
-function (status){
 	ws.callSocket().emit('coffe:level', status); 
 }
