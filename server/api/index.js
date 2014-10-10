@@ -2,11 +2,20 @@ var express = require('express');
 var app = module.exports = express();
 var Machine =  require('./service/machine');
 
+var redis = require('redis');
+var url = require('url');
+
+var redisURL = url.parse(process.env.REDISCLOUD_URL);
+var client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 app.put('/:id', function (req, res) {
-  updatedWebClient(req.body.status);
+  updatedWebClient(client.get('coffee', function (err, reply) {
+    reply.toString(); 
+}););
+  client.set('coffee', req.body.status);
   res.json(new Machine(req.body.status));
 });
 
