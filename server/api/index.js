@@ -11,7 +11,7 @@ var client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_chec
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-app.put('/:id', function (req, res) {
+app.put('/:id', function (req, res) {	
   updatedWebClient(req.body.status);
   res.json(new Machine(req.body.status));
 });
@@ -24,12 +24,3 @@ function updatedWebClient(status){
 	ws.callSocket().emit('coffe:level', status); 
 }
 
-function getRedis(){
-client.get('coffee', function (err, reply) {
-   reply.toString(); 
-});
-}
-
-function setRedis(status){
-	client.set('coffee', status);	
-}
