@@ -12,7 +12,9 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 app.put('/:id', function (req, res) {
-  updatedWebClient(req.body.status);
+  updatedWebClient( parseInt(client.get('coffee', function (err, reply) {
+   reply.toString(); 
+}));
   client.set('coffee', req.body.status);
   res.json(new Machine(req.body.status));
 });
