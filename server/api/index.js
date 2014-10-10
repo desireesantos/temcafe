@@ -12,9 +12,8 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 app.put('/:id', function (req, res) {
-  client.set('coffee', req.body.status);
   updatedWebClient(parseInt(getRedis()));
-  // res.json(new Machine(req.body.status));
+  res.json(new Machine(req.body.status));
 });
 
 app.get('/', function (req, res) {
@@ -26,6 +25,7 @@ function updatedWebClient(status){
 }
 
 function getRedis(){
+client.set('coffee', req.body.status);	
 client.get('coffee', function (err, reply) {
    reply.toString(); 
 });
