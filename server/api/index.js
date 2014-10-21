@@ -1,7 +1,7 @@
 var express = require('express');
 var app = module.exports = express();
 var Machine =  require('./service/machine');
-var redis = require('../ws').redisClient();
+var redis = require('../ws').redisClient;
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
