@@ -1,4 +1,6 @@
 var socket;
+var redis = require('redis').createClient();
+redis.set("coffee", "70");
 
 exports.listen = function (http) {
  socket = require('socket.io').listen(http, require('config').server);
