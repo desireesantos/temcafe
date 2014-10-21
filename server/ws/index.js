@@ -7,7 +7,7 @@ exports.listen = function (http) {
  socket.sockets.on('connection', function (client) {
       client.emit('coffe:level', '100' );
       console.log('someone connected');
-      createClient();
+      createClient;
   }); 
 };
 
