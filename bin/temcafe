@@ -14,4 +14,3 @@ http.listen(config.port, function () {
   console.log('» Tem Café? ☕');
 });
 
-require('../server/ws').createClient();
