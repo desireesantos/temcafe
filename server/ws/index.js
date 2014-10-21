@@ -20,7 +20,6 @@ exports.getRedis = function () {
     });
 };
 
-
 function startRedis(){
   redis.createClient();
   redis.set('coffee', '0');
