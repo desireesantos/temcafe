@@ -1,12 +1,13 @@
 var express = require('express');
 var app = module.exports = express();
 var Machine =  require('./service/machine');
+var redis = require('../ws').redisClient();
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 app.put('/:id', function (req, res) {	
-  updatedWebClient(req.body.status);
+  updatedWebClient(getRedis());
   res.json(new Machine(req.body.status));
 });
 
@@ -18,3 +19,8 @@ function updatedWebClient(status){
 	ws.callSocket().emit('coffe:level', status); 
 }
 
+function getRedis(){
+	redis.get("coffee", function(err, reply) {
+     return reply;
+});
+}
