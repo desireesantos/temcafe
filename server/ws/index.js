@@ -17,12 +17,11 @@ exports.callSocket = function () {
 
 exports.getRedis = function () {
    client.get('coffeeLevelDB', function (err, reply) {
-    reply.toString(); 
+    return reply.toString(); 
 });
 };
 
 exports.setRedis = function (newStatus) {
-  console.log("***** SET UP *****")
   client.set('coffeeLevelDB', newStatus);
 }
 
@@ -31,6 +30,5 @@ var url = require('url');
 var redisURL = url.parse(process.env.REDISCLOUD_URL);
 client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
 client.auth(redisURL.auth.split(":")[1]);
-client.set('coffee', '0');
 }
 
