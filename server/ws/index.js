@@ -26,7 +26,7 @@ exports.setRedis = function (newStatus) {
   client.set('coffee', newStatus);
   console.log(
         client.get("coffee", function (err, reply) {
-       return reply.toString(); 
+       return reply.inspect; 
     })
     );
 }
