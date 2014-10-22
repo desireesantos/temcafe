@@ -13,7 +13,6 @@ app.put('/:id', function (req, res) {
 });
 
 app.get('/', function (req, res) {
-  redis.setRedis(req.body.status);	
   res.json({level: '70'});
  });
 

@@ -30,5 +30,5 @@ exports.setRedis = function (newStatus) {
 
 function startRedis(){
   redis.createClient();
-  redis.set('coffee', '0');
+  redis.set('coffee', '40');
 }
