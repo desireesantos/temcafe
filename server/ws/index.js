@@ -1,6 +1,6 @@
 var socket;
 var redis = require('redis');
-var redis_client = redis.createClient();
+var client;
 
 exports.listen = function (http) {
  socket = require('socket.io').listen(http, require('config').server);
@@ -17,15 +17,22 @@ exports.callSocket = function () {
 
 
 exports.getRedis = function () {
-   redis_client.get("coffee", function (err, reply) {
+   client.get("coffee", function (err, reply) {
        return reply.toString(); 
     });
 };
 
 exports.setRedis = function (newStatus) {
-  redis_client.set('coffee', newStatus);
+  client.set('coffee', newStatus);
 }
 
 function startRedis(){
+var url = require('url');
+var redisURL = url.parse(process.env.REDISCLOUD_URL);
+client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
+client.auth(redisURL.auth.split(":")[1]);
  setRedis(0);
 }
+
+var redis = require('redis');
+var url = require('url');
