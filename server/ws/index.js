@@ -21,7 +21,7 @@ exports.getRedis = function () {
 });
 };
 
-exports.   = function (newStatus) {
+exports.setRedis = function (newStatus) {
   client.set('foo', newStatus);
 }
 
