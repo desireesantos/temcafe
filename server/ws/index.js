@@ -16,17 +16,14 @@ exports.callSocket = function () {
 }
 
 exports.getRedis = function () {
-   client.get("coffee", function (err, reply) {
-       return reply.toString(); 
-    });
+   client.get('coffeeLevelDB', function (err, reply) {
+    reply.toString(); 
+});
 };
 
 exports.setRedis = function (newStatus) {
   console.log("***** SET UP *****")
-  client.set('foo', newStatus);
-client.get('foo', function (err, reply) {
-    console.log(reply.toString()); 
-});
+  client.set('coffeeLevelDB', newStatus);
 }
 
 function startRedis(){
