@@ -14,11 +14,19 @@ exports.callSocket = function () {
  return socket;
 }
 
+exports.redis = function () {
+  return redis;
+}
+
 exports.getRedis = function () {
    client.get("coffee", function (err, reply) {
        return reply.toString(); 
     });
 };
+
+exports.setRedis = function (newStatus) {
+  redis.set('coffee', newStatus);
+}
 
 function startRedis(){
   redis.createClient();
