@@ -24,7 +24,7 @@ exports.getRedis = function () {
 exports.setRedis = function (newStatus) {
   console.log("***** SET UP *****")
   client.set('coffee', newStatus);
-  console.log(newStatus);
+  console.log(getRedis());
 }
 
 function startRedis(){
