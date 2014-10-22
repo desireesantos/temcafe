@@ -1,5 +1,6 @@
 var socket;
 var redis = require('redis');
+var client = redis.createClient();
 
 exports.listen = function (http) {
  socket = require('socket.io').listen(http, require('config').server);
@@ -29,17 +30,5 @@ exports.setRedis = function (newStatus) {
 }
 
 function startRedis(){
-  redis.createClient();
-  redis.on("connect", runSample);
- 
-function runSample() {
-    // Set a value
-    client.set("string key", "Hello World", function (err, reply) {
-        console.log(reply.toString());
-    });
-    // Get a value
-    client.get("string key", function (err, reply) {
-        console.log(reply.toString());
-    });
-}
+ setRedis(0);
 }
