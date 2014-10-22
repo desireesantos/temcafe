@@ -23,12 +23,10 @@ exports.getRedis = function () {
 
 exports.setRedis = function (newStatus) {
   console.log("***** SET UP *****")
-  client.set('coffee', newStatus);
-  console.log(
-        client.get("coffee", function (err, reply) {
-        reply.toString(); 
-    })
-    );
+  client.set('foo', newStatus);
+client.get('foo', function (err, reply) {
+    console.log(reply.toString()); 
+});
 }
 
 function startRedis(){
