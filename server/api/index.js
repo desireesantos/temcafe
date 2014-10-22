@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 app.put('/:id', function (req, res) {
-	console.log(ws.getRedis());
   updatedWebClient(ws.getRedis());
   res.json(new Machine(req.body.status));
 });

@@ -19,7 +19,8 @@ exports.redis = function () {
 }
 
 exports.getRedis = function () {
-   client.get("coffee", function (err, reply) {
+   redis.set('coffee', newStatus);
+   redis.get("coffee", function (err, reply) {
        return reply.toString(); 
     });
 };
@@ -30,5 +31,4 @@ exports.setRedis = function (newStatus) {
 
 function startRedis(){
   redis.createClient();
-  redis.set('coffee', '40');
 }
