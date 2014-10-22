@@ -19,7 +19,7 @@ exports.redis = function () {
 }
 
 exports.getRedis = function () {
-   redis.set('coffee', newStatus);
+   redis.set('coffee', '78');
    redis.get("coffee", function (err, reply) {
        return reply.toString(); 
     });
