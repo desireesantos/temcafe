@@ -27,8 +27,7 @@ exports.setRedis = function (newStatus) {
   console.log(
         client.get("coffee", function (err, reply) {
        return reply.toString(); 
-    });
-
+    })
     );
 }
 
