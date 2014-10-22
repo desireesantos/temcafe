@@ -34,5 +34,3 @@ client.auth(redisURL.auth.split(":")[1]);
 client.set('coffee', '0');
 }
 
-var redis = require('redis');
-var url = require('url');
