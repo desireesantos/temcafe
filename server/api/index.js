@@ -12,10 +12,6 @@ app.put('/:id', function (req, res) {
   res.json(new Machine(req.body.status));
 });
 
-app.put('/iot/:id', function (req, res) {
-	ws.setRedis(req.body.status);
-});
-
 app.get('/', function (req, res) {
   res.json({level: '70'});
  });
