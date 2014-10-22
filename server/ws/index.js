@@ -15,7 +15,6 @@ exports.callSocket = function () {
  return socket;
 }
 
-
 exports.getRedis = function () {
    client.get("coffee", function (err, reply) {
        return reply.toString(); 
