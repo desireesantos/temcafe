@@ -16,8 +16,8 @@ exports.callSocket = function () {
 }
 
 exports.getRedis = function () {
- result = client.hkeys('foo', function (err, reply) {
-    reply; 
+ result = client.get('foo', function (err, reply) {
+    reply.toString(); 
 });
 
 console.log ("GET Redis");

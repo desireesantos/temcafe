@@ -6,11 +6,10 @@ var ws = require('../ws');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-app.put('/:id', function (req, res) {
-  ws.redis().set('foo', req.body.status,  ws.redis().print);	
+app.put('/:id', function (req, res) {	
 
  console.log("** Redis set**");
- console.log(req.body.status);
+ console.log(ws.redis().set('foo', req.body.status));
 
   console.log("** Redis get**");
   console.log(ws.getRedis());
