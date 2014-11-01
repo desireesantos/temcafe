@@ -14,6 +14,7 @@ app.put('/:id', function (req, res) {
 
   console.log("** Redis get**");
   console.log(ws.getRedis());
+  
   updatedWebClient(ws.getRedis());
   res.json(new Machine(req.body.status));
 });

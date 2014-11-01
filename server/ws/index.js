@@ -16,15 +16,17 @@ exports.callSocket = function () {
 }
 
 exports.getRedis = function () {
-  client.get('foo', function (err, reply) {
+ result = client.get('foo', function (err, reply) {
     reply.toString(); 
 });
+
+console.log ("GET Redis");
+console.log(result);
+
+return result;
 };
 
 exports.redis = function () {
- console.log("** Redis **");
- console.log(client);
-
  return client;
 }
 
