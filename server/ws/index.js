@@ -21,7 +21,7 @@ exports.getRedis = function () {
 });
 };
 
-exports.redis = function (newStatus) {
+exports.redis = function () {
   client;
 }
 
