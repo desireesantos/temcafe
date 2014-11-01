@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 app.put('/:id', function (req, res) {
-  ws.redis().hset('foo', req.body.status);	
+  ws.redis().set('foo', req.body.status, redis.print);	
 
  console.log("** Redis set**");
  console.log(req.body.status);
