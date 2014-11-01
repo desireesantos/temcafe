@@ -20,8 +20,8 @@ exports.getRedis = function () {
     reply.toString(); 
 });
 
-console.log ("GET Redis");
-console.log(result);
+// console.log ("GET Redis");
+// console.log(result);
 
 return result;
 };
