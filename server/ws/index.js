@@ -22,8 +22,9 @@ exports.getRedis = function () {
 };
 
 exports.redis = function () {
+ console.log("** Redis **");
  console.log(client);
- console.log("** Redis **");	
+
  return client;
 }
 
