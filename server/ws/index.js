@@ -26,12 +26,12 @@ exports.redis = function () {
 }
 
 exports.setRedis = function (value) {
- return client.set('coffee', value);
+  client.set('coffee', value);
 }
 
 exports.getRedis = function () {
  return client.get('coffee', function (err, reply) {
-    console.dir(reply); 
+    reply; 
 });
 };
 
