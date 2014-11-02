@@ -33,15 +33,15 @@ exports.redis = function () {
 }
 
 exports.setRedis = function (value) {
- client.set('coffee', value, client.print);
+ client.set('coffee', value);
 }
 
 exports.getRedis = function () {
-client.get('coffee', redis.print);
+client.get('coffee', client.print);
 }
 
 function  testToRead () {
-client.get('coffee', redis.print);
+client.get('coffee', client.print);
 
 }
 
