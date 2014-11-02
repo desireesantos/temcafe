@@ -45,13 +45,14 @@ function readingCoffeeLevel (client, callback) {
         if(err) {
             console.error("error");
         } else {
-            callback(value);
+            callback().call(redis_get(value));
         }
     });
 }
 
-function redis_get (redis_item) {
-  getResult = redis_item;
+function redis_get (value) {
+  getResult = value;
+  console.dir("ENTROU");
 });
 
 
