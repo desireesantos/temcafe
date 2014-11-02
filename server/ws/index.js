@@ -15,9 +15,9 @@ var url = require('url');
 var redisURL = url.parse(process.env.REDISCLOUD_URL);
 client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
 client.auth(redisURL.auth.split(":")[1]);
-client.set('coffee', 10);
-client.on("error", function (err) {
-    console.log("Error "+ err);
+
+client.on("connect", function () {
+    console.log("Got socket connection.")
 });
 
 console.log('Redis ready ...');
@@ -38,8 +38,8 @@ exports.setRedis = function (value) {
 
 exports.getRedis = function () {
 
-return client.get('coffee', function (err, reply) {
-    console.dir(reply.toString); 
+ client.info('coffee', function (err, reply) {
+    reply.toString; 
 });
 
 };
