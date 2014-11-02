@@ -47,7 +47,7 @@ function readingCoffeeLevel (client) {
  	console.log('IN ' + temp);
 	});
   var test = client.get('coffee');
-  console.log('OUT ' + test);
+  console.log('OUT TEST ' + test);
   console.log('OUT ' + temp);
   return temp;
 }
