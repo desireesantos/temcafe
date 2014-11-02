@@ -34,6 +34,7 @@ var result;
 client.get('coffee', function (err, reply) {
     result = reply; 
 });
+
 return result;
 };
 
