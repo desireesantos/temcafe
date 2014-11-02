@@ -52,7 +52,7 @@ function readingCoffeeLevel (client, callback) {
 
 function redis_get (value) {
   getResult = value;
-  console.dir("ENTROU");
+  console.dir("ENTROU " + getResult);
 };
 
 
