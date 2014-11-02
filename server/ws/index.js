@@ -17,7 +17,7 @@ var mongoUri = process.env.MONGOLAB_URI ||
 mongo.Db.connect(mongoUri, function (err, db) {
   db.collection('temcafe', function(er, collection) {
     collection.insert({'coffee': '10'}, function(er,rs) {
-    	console.log("Record added as "+ db.collection.find(){{ "_id" : ObjectId("526705b4a3559a176784b4af"), "coffee" : "10" }};
+    	console.log("Record added as "+ db.collection.find(){ "_id" : ObjectId("526705b4a3559a176784b4af"), "coffee" : "10" };
     });
   });
 });
