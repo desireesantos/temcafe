@@ -1,44 +1,41 @@
-var socket;
-var redis = require('redis');
 var client;
+var socket;
 
 exports.listen = function (http) {
  socket = require('socket.io').listen(http, require('config').server);
  socket.sockets.on('connection', function (client) {
-      client.emit('coffe:level', '0' );
-      console.log('someone connecting ...');
-      startRedis();
+ console.log('someone connecting ...');
   }); 
 };
+
+exports.startRedis = function () {
+var redis = require('redis');	
+var url = require('url');
+var redisURL = url.parse(process.env.REDISCLOUD_URL);
+client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
+client.auth(redisURL.auth.split(":")[1]);
+ console.log('Redis ready ...');
+}
 
 exports.callSocket = function () {
  return socket;
 }
 
-exports.getRedis = function () {
- result = client.get('foo', function (err, reply) {
-    reply.toString(); 
-});
-
-// console.log ("GET Redis");
-// console.log(result);
-
-return result;
-};
-
 exports.redis = function () {
  return client;
 }
 
-function startRedis(){
-var url = require('url');
-var redisURL = url.parse(process.env.REDISCLOUD_URL);
-client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
-client.auth(redisURL.auth.split(":")[1]);
-client.set('foo',70);
-client.get('foo', function (err, reply) {
-	console.log("START REDIS");
-    console.log(reply.toString()); 
-});
+exports.setRedis = function (value) {
+ return client.set('coffee', value);
 }
+
+exports.getRedis = function () {
+ return client.get('coffee', function (err, reply) {
+    reply.toString(); 
+});
+};
+
+
+
+
 

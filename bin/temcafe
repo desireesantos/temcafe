@@ -8,6 +8,8 @@ app.use('/api', require('../server/api'));
 app.use('/', require('serve-static')(require('path').resolve(__dirname, '../client')));
 
 require('../server/ws').listen(http);
+require('../server/ws').startRedis();
+
 http.listen(config.port, function () {
   console.log('Server listening at port %d', config.port);
   console.log('» Tem Café? ☕');
