@@ -1,5 +1,6 @@
 var client;
 var socket;
+var getResult;
 
 exports.startRedis = function () {
 	var redis = require('redis');	
@@ -7,11 +8,9 @@ exports.startRedis = function () {
 	var redisURL = url.parse(process.env.REDISCLOUD_URL);
 	client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
 	client.auth(redisURL.auth.split(":")[1]);
-	// client.set('coffee', 10);
-	result = readingCoffeeLevel(client);
-	console.dir('Redis ready with value(2) ----> ' + result);
+	client.set('coffee', 10);
+	console.dir('Redis ready with value(2) ----> ' + readingCoffeeLevel(client));
 }
-
 
 exports.listen = function (http) {
 	socket = require('socket.io').listen(http, require('config').server);
@@ -41,9 +40,8 @@ client.get('coffee', function (err, reply) {
 }
 
 function readingCoffeeLevel (client) {
-  var temp;
   client.get('coffee', function (err, reply) {
- 	temp = reply;
+ 	getResult = reply;
  	console.log('IN ' + temp);
 	});
   console.log('OUT ' + temp);
