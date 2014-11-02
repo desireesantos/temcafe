@@ -15,7 +15,7 @@ exports.listen = function (http) {
 	socket = require('socket.io').listen(http, require('config').server);
 	socket.sockets.on('connection', function (client) {
 	console.log('someone connecting 3 with value ' + getResult);	
-	client.emit('coffe:level', result);	
+	client.emit('coffe:level', getResult);	
 	console.log('someone connecting 4...');
 }); 
 }
