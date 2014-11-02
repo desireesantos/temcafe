@@ -31,15 +31,11 @@ exports.setRedis = function (value) {
 }
 
 exports.getRedis = function () {
-var result;	
-client.get('coffee', function (err, reply) {
 
-	reply.forEach(function (r, i) {
-            console.log("--->" + i + ": " + r);
-        });
-    console.dir(reply); 
+return client.get('coffee', function (err, reply) {
+    console.dir(reply.toString); 
 });
-return result;
+
 };
 
 function  testToRead () {
