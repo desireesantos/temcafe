@@ -8,7 +8,15 @@ exports.startRedis = function () {
 	client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
 	client.auth(redisURL.auth.split(":")[1]);
 	client.set('coffee', 10);
-	console.dir('Redis ready with value(2) ----> ' + readingCoffeeLevel(client));
+	console.dir('Redis ready with value(2) ----> ', function redis_get(callback) {
+    client.get('coffee', function(err, value) {
+        if(err) {
+            console.error("error");
+        } else {
+            callback(value); 
+        }
+    });
+}  );
 }
 
 exports.listen = function (http) {
@@ -46,3 +54,5 @@ function readingCoffeeLevel (client) {
   console.log('OUT ' + result);
   return result;
 }
+
+
