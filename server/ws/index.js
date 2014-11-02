@@ -1,6 +1,6 @@
 var client;
 var socket;
-var redis;
+
 
 exports.listen = function (http) {
  socket = require('socket.io').listen(http, require('config').server);
@@ -11,7 +11,7 @@ exports.listen = function (http) {
 };
 
 exports.startRedis = function () {
-redis = require('redis');	
+var redis = require('redis');	
 var url = require('url');
 var redisURL = url.parse(process.env.REDISCLOUD_URL);
 client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
@@ -40,7 +40,7 @@ exports.setRedis = function (value) {
 }
 
 exports.getRedis = function () {
-client.get('coffee', client.print);
+client.get('coffee');
 }
 
 function  testToRead () {
