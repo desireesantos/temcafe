@@ -28,14 +28,14 @@ exports.redis = function () {
 
 exports.setRedis = function (value) {
   client.set('coffee', value);
+  console.log('OK +++++++++');
 }
 
 exports.getRedis = function () {
 var result;	
 client.get('coffee', function (err, reply) {
-    result = reply; 
+    console.dir(reply); 
 });
-console.dir(result);
 return result;
 };
 
