@@ -8,17 +8,12 @@ exports.startRedis = function () {
 	var redisURL = url.parse(process.env.REDISCLOUD_URL);
 	client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
 	client.auth(redisURL.auth.split(":")[1]);
-	client.set('coffee', 10);
-	console.log('Redis ready with value(2) ----> ');
-	console.dir( readingCoffeeLevel(client, redis_get) );
 }
 
 exports.listen = function (http) {
 	socket = require('socket.io').listen(http, require('config').server);
 	socket.sockets.on('connection', function (client) {
-	client.emit('coffe:level', 40);
-	console.dir("FOI(3) ----- "+ 40);	
-	console.log('someone connecting ...');
+	client.emit('coffe:level', readingCoffeeLevel(client, redis_get));
 }); 
 }
 
@@ -51,8 +46,7 @@ function readingCoffeeLevel (client, callback) {
 }
 
 function redis_get (value) {
-  getResult = value;
-  console.dir("ENTROU " + getResult);
+  return getResult = value;
 };
 
 
