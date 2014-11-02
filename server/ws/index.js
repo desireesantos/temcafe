@@ -4,7 +4,7 @@ var socket;
 exports.listen = function (http) {
  socket = require('socket.io').listen(http, require('config').server);
  socket.sockets.on('connection', function (client) {
- client.emit('coffe:level', getRedis());	
+ client.emit('coffe:level', testToRead());	
  console.log('someone connecting ...');
   }); 
 };
@@ -39,7 +39,14 @@ console.dir(result);
 return result;
 };
 
+function  testToRead () {
+var result;	
+client.get('coffee', function (err, reply) {
+    result = reply; 
+});
+return result;
 
+}
 
 
 
