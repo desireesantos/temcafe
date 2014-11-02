@@ -9,7 +9,7 @@ exports.startRedis = function () {
 	client.auth(redisURL.auth.split(":")[1]);
 
 	client.set('coffee', readingCoffeeLevel(redis));
-	console.log('Redis ready with value ---->' + readingCoffeeLevel());
+	console.log('Redis ready with value ---->' + readingCoffeeLevel(client));
 }
 
 
@@ -39,7 +39,7 @@ client.get("coffee", function (err, reply) {
 	});
 }
 
-function  readingCoffeeLevel (client) {
+function readingCoffeeLevel (client) {
 client.get("coffee", function (err, reply) {
 	  reply.toString();
 	});
