@@ -45,7 +45,7 @@ function readingCoffeeLevel (client, callback) {
         if(err) {
             console.error("error");
         } else {
-            callback().call(redis_get(value));
+            callback(redis_get(value));
         }
     });
 }
