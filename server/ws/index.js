@@ -15,7 +15,7 @@ exports.startRedis = function () {
 exports.listen = function (http) {
 	socket = require('socket.io').listen(http, require('config').server);
 	socket.sockets.on('connection', function (client) {
-	client.emit('coffe:level', readingCoffeeLevel(redis, redis_get) );	
+	client.emit('coffe:level', readingCoffeeLevel(redisClient, redis_get) );	
 	console.log('someone connecting ...');
 }); 
 }
