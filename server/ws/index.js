@@ -27,8 +27,7 @@ exports.redis = function () {
 }
 
 exports.setRedis = function (value) {
-  client.set('coffee', value);
-  console.log('OK +++++++++');
+  console.log( client.set('coffee', value, client.print));
 }
 
 exports.getRedis = function () {
