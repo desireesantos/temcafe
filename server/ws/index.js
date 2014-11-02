@@ -30,9 +30,10 @@ exports.setRedis = function (value) {
 }
 
 exports.getRedis = function () {
- return client.get('coffee', function (err, reply) {
-    reply; 
+ result = client.get('coffee', function (err, reply) {
+    console.dir(reply); 
 });
+ console.dir(result);
 };
 
 
