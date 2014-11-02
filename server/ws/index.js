@@ -9,14 +9,14 @@ exports.startRedis = function () {
 	client.auth(redisURL.auth.split(":")[1]);
 
 	client.set('coffee', readingCoffeeLevel(redis));
-	console.log('Redis ready with value ' + readingCoffeeLevel());
+	console.log('Redis ready with value ---->' + readingCoffeeLevel());
 }
 
 
 exports.listen = function (http) {
 	socket = require('socket.io').listen(http, require('config').server);
 	socket.sockets.on('connection', function (client) {
-	client.emit('coffe:level', testToRead());	
+	client.emit('coffe:level', 10);	
 	console.log('someone connecting ...');
 }); 
 }
@@ -33,8 +33,8 @@ exports.setRedis = function (value) {
  client.set('coffee', value);
 }
 
-exports.getRedis = function () {
-return client.get("coffee", function (err, reply) {
+exports.getRedis = function (client) {
+client.get("coffee", function (err, reply) {
 	  reply.toString();
 	});
 }
