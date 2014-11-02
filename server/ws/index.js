@@ -50,7 +50,7 @@ function readingCoffeeLevel (client, callback) {
     });
 }
 
-redis_get("key", function(redis_item) {
+function redis_get("key", function(redis_item) {
   getResult = redis_item;
 });
 
