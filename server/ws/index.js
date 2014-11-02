@@ -8,15 +8,15 @@ exports.startRedis = function () {
 	var redisURL = url.parse(process.env.REDISCLOUD_URL);
 	redisClient = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
 	redisClient.auth(redisURL.auth.split(":")[1]);
-	console.log('Redis ready with value(2) ----> ');
 }
 
 exports.listen = function (http) {
 	result = readingCoffeeLevel(redisClient, redis_get);
 	socket = require('socket.io').listen(http, require('config').server);
 	socket.sockets.on('connection', function (client) {
+	console.log('someone connecting 3 with value ' + result);	
 	client.emit('coffe:level', result);	
-	console.log('someone connecting 3...');
+	console.log('someone connecting 4...');
 }); 
 }
 
