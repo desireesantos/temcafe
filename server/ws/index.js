@@ -1,5 +1,6 @@
 var client;
 var socket;
+var getResult = 0;
 
 exports.startRedis = function () {
 	var redis = require('redis');	
@@ -13,10 +14,11 @@ exports.startRedis = function () {
         if(err) {
             console.error("error");
         } else {
-            callback(value); 
+            callback(getResult = value); 
         }
     });
 }  );
+console.log(getResult);
 }
 
 exports.listen = function (http) {
