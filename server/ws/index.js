@@ -15,8 +15,14 @@ var url = require('url');
 var redisURL = url.parse(process.env.REDISCLOUD_URL);
 client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
 client.auth(redisURL.auth.split(":")[1]);
+client.set('coffee', 10);
+client.on("error", function (err) {
+    console.log("Error "+ err);
+});
+
 console.log('Redis ready ...');
 }
+
 
 exports.callSocket = function () {
  return socket;
