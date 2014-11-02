@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 
 app.put('/:id', function (req, res) {	
 
- // ws.setRedis(req.body.status);
+ ws.redis().set('coffee', value);
  updatedWebClient(req.body.status);
  res.json(new Machine(req.body.status));
 });
