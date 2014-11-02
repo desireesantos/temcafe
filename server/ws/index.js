@@ -13,7 +13,7 @@ exports.startRedis = function () {
 var redis = require('redis');	
 var url = require('url');
 var redisURL = url.parse(process.env.REDISCLOUD_URL);
-client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
+client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true, detect_buffers: true});
 client.auth(redisURL.auth.split(":")[1]);
 
 client.on("connect", function () {
