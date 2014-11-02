@@ -40,10 +40,9 @@ client.get('coffee', function (err, reply) {
 }
 
 function readingCoffeeLevel (client) {
-var result = 0;
- client.get('coffee', function (err, reply) {
- 	result = reply.toString();
+
+ return client.get('coffee', function (err, reply) {
+ 	 console.dir("READDING(1) ..." + result);
+ 	reply;
 	});
- console.dir("READDING(1) ..." + result);
- return result;
 }
