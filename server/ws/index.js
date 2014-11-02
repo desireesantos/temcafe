@@ -44,7 +44,8 @@ function readingCoffeeLevel (client) {
   var temp;
   client.get('coffee', function (err, reply) {
  	temp = reply.toString;
+ 	console.log('IN ' + temp);
 	});
-  console.log('DIR ' + temp);
+  console.log('OUT ' + temp);
   return temp;
 }
