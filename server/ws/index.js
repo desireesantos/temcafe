@@ -5,6 +5,7 @@ exports.listen = function (http) {
  socket = require('socket.io').listen(http, require('config').server);
  socket.sockets.on('connection', function (client) {
  console.log('someone connecting ...');
+ socket.emit('coffe:level', '80'); 
   }); 
 };
 
@@ -14,7 +15,7 @@ var url = require('url');
 var redisURL = url.parse(process.env.REDISCLOUD_URL);
 client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: true});
 client.auth(redisURL.auth.split(":")[1]);
- console.log('Redis ready ...');
+console.log('Redis ready ...');
 }
 
 exports.callSocket = function () {

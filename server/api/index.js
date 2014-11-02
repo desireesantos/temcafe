@@ -10,7 +10,7 @@ app.put('/:id', function (req, res) {
 
  ws.setRedis(req.body.status);
  console.log("** Redis get**");
- updatedWebClient(ws.getRedis());
+ updatedWebClient(req.body.status);
  res.json(new Machine(req.body.status));
 });
 
