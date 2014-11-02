@@ -17,10 +17,10 @@ client = redis.createClient(redisURL.port, redisURL.hostname, {no_ready_check: t
 client.auth(redisURL.auth.split(":")[1]);
 
 client.on("connect", function () {
-    console.log("Got socket connection.")
+    console.log("Got redis connection ...")
 });
 client.set('coffee', 10);
-console.log('Redis ready ...');
+console.log('Redis ready with value' + testToRead());
 }
 
 
