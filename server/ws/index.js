@@ -16,7 +16,7 @@ exports.listen = function (http) {
 	socket = require('socket.io').listen(http, require('config').server);
 	socket.sockets.on('connection', function (client) {
 	client.emit('coffe:level', 40);
-	console.dir("FOI(3) ----- "+ readingCoffeeLevel(client));	
+	console.dir("FOI(3) ----- "+ 40);	
 	console.log('someone connecting ...');
 }); 
 }
