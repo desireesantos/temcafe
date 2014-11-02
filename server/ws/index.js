@@ -43,8 +43,8 @@ client.get('coffee', function (err, reply) {
 function readingCoffeeLevel (client) {
   var temp;
   client.get('coffee', function (err, reply) {
- 	console.dir('DIR ' + reply);
  	temp = reply;
+    console.log('DIR ' + temp);
 	});
   return temp;
 }
