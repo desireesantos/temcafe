@@ -1,6 +1,5 @@
 var client;
 var socket;
-var getResult;
 
 exports.startRedis = function () {
 	var redis = require('redis');	
@@ -40,10 +39,10 @@ client.get('coffee', function (err, reply) {
 }
 
 function readingCoffeeLevel (client) {
-  client.get('coffee', function (err, reply) {
- 	getResult = reply;
- 	console.log('IN ' + getResult);
-	});
-  console.log('OUT ' + client.class);
-  return getResult;
+ var result = 0;
+  client.GET('coffee', function (err, reply) {
+ 	result = parseInt(reply);
+   });
+  console.log('OUT ' + result);
+  return result;
 }
