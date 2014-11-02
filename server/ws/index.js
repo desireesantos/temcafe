@@ -12,9 +12,10 @@ exports.startRedis = function () {
 }
 
 exports.listen = function (http) {
+	result = readingCoffeeLevel(redisClient, redis_get
 	socket = require('socket.io').listen(http, require('config').server);
 	socket.sockets.on('connection', function (client) {
-	client.emit('coffe:level', readingCoffeeLevel(redisClient, redis_get) );	
+	client.emit('coffe:level', result);	
 	console.log('someone connecting 3...');
 }); 
 }
@@ -49,7 +50,7 @@ function readingCoffeeLevel (redisClient, callback) {
 
 function redis_get (value) {
   getResult = value;
-  console.dir("ENTROU 2" + getResult);
+  console.dir("ENTROU 2 " + getResult);
 };
 
 
