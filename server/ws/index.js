@@ -21,7 +21,6 @@ exports.listen = function (http) {
 }); 
 }
 
-
 exports.callSocket = function () {
  return socket;
 }
@@ -35,11 +34,13 @@ exports.setRedis = function (value) {
 }
 
 exports.getRedis = function () {
-client.get('coffee', client.print);
+return client.get("coffee", function (err, reply) {
+	  reply.toString();
+	});
 }
 
 function  readingCoffeeLevel (client) {
-	client.get("coffee", function (err, reply) {
+client.get("coffee", function (err, reply) {
 	  reply.toString();
 	});
 }
