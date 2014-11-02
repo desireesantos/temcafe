@@ -9,7 +9,6 @@ app.use(bodyParser.json());
 app.put('/:id', function (req, res) {	
 
  ws.setRedis(req.body.status);
- console.log("** Redis get**");
  updatedWebClient(req.body.status);
  res.json(new Machine(req.body.status));
 });
