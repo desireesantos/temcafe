@@ -10,20 +10,18 @@ exports.listen = function (http) {
 };
 
 exports.startRedis = function () {
-var redis = require('redis');	
-var url = require('url');
-var redisURL = url.parse(process.env.REDISCLOUD_URL);
-client = redis.createClient(redisURL.port, redisURL.hostname, {detect_buffers: true});
-client.auth(redisURL.auth.split(":")[1]);
+var mongo = require('mongodb');
+var mongoUri = process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL;
 
-client.on("connect", function () {
-    console.log("Got redis connection ...");
+mongo.Db.connect(mongoUri, function (err, db) {
+  db.collection('temcafe', function(er, collection) {
+    collection.insert({'coffee': '10'}, {safe: true}, function(er,rs) {
+    	console.log("Record added as "+ rs[0]);
+    });
+  });
 });
-
-redis.debug_mode = true;
-client.set('coffee', 10, redis.print);
-console.log('Redis ready with value' + testToRead());
-}
+};
 
 
 exports.callSocket = function () {
