@@ -19,7 +19,7 @@ client.auth(redisURL.auth.split(":")[1]);
 client.on("connect", function () {
     console.log("Got socket connection.")
 });
-
+client('coffee', 10);
 console.log('Redis ready ...');
 }
 
@@ -37,21 +37,13 @@ exports.setRedis = function (value) {
 }
 
 exports.getRedis = function () {
-
  client.info('coffee', function (err, reply) {
     reply.toString; 
 });
-
 };
 
 function  testToRead () {
-var result;	
-client.get('coffee', function (err, reply) {
-    result = reply; 
-});
-console.log('*************');
-console.dir(result)
-return result;
+client.get("coffee", redis.print);
 
 }
 
