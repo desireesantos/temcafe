@@ -29,12 +29,8 @@ exports.redis = function () {
 }
 
 exports.setRedis = function (redisClient, value) {
-   redisClient.set('coffee', value, function(err) {
-        if (err) {
-            console.error("error");
-        }
-    return true;
-    });
+  writingCoffeeLevel(redisClient, redis_get);	
+  
 }
 
 exports.getRedis = function () {
@@ -58,4 +54,12 @@ function redis_get (value) {
   console.dir("ENTROU 2 " + getResult);
 };
 
+function writingCoffeeLevel (redisClient, callback) {
+ redisClient.set('coffee', function(err, value) {
+        if (err) {
+            console.error("error");
+        }
+    return true;
+  });
+}
 
