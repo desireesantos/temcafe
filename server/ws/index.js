@@ -28,8 +28,13 @@ exports.redis = function () {
  return redisClient;
 }
 
-exports.setRedis = function (value) {
- redisClient.set('coffee', value);
+exports.setRedis = function (redisClient, value) {
+   redisClient.set('coffee', value, function(err) {
+        if (err) {
+            console.error("error");
+        }
+    return true;
+    });
 }
 
 exports.getRedis = function () {

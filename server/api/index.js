@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 app.put('/:id', function (req, res) {	
- ws.redis().set('coffee', req.body.status);
+ws.setRedis( ws.redis(), req.body.status);
  updatedWebClient(req.body.status);
  res.json(new Machine(req.body.status));
 });
