@@ -29,7 +29,11 @@ exports.redis = function () {
 }
 
 exports.setRedis = function (value) {
+ console.log('Setting value 1' + value);
  redisClient.set('coffee', value);
+ readingCoffeeLevel(redisClient, redis_get);
+ console.log('Setting value 2' + getResult);
+ console.log('Setting value 2' + getResult);
 }
 
 exports.getRedis = function () {
