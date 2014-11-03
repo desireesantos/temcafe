@@ -14,7 +14,7 @@ app.put('/:id', function (req, res) {
 });
 
 app.get('/', function (req, res) {
-  res.json({level: '70'});
+  res.json({level: ws.getRedis()});
  });
 
 function updatedWebClient(status){

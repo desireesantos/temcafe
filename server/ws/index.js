@@ -34,9 +34,7 @@ exports.setRedis = function (value) {
 }
 
 exports.getRedis = function () {
-redisClient.get('coffee', function (err, reply) {
-	  reply.toString();
-	});
+ return getResult;
 }
 
 function readingCoffeeLevel (redisClient, callback) {
